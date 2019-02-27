@@ -10,7 +10,6 @@ export default class App extends React.Component {
       <View style={styles.container}>
         <Text> hejhej </Text>
         <Navbar />
-        <SignIn />
       </View>
     );
   }

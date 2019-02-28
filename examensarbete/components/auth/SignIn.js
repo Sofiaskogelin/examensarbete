@@ -1,7 +1,8 @@
 import React from "react";
-import { StyleSheet, Text, View, TextInput,  Image, TouchableOpacity } from "react-native";
+import { StyleSheet, Text, View, TextInput,  Button, TouchableOpacity } from "react-native";
 import LinearGradient from 'react-native-linear-gradient';
 import Backend from '../../firebase.js'
+
 
 export default class SignIn extends React.Component {
     
@@ -29,6 +30,10 @@ export default class SignIn extends React.Component {
                 console.log(text)
               }}
              />
+
+             <Button title="Navigate to Chat"
+            onPress = {()=>this.props.navigation.navigate('Chat')}
+            />
 
              <TouchableOpacity
              style={styles.buttons}

@@ -17,7 +17,7 @@ import 'firebase/auth'
 
     
     handleSignUp = (newUser) => {
-
+        
         firebase.auth().createUserWithEmailAndPassword(
             this.state.email,
             this.state.password
@@ -90,7 +90,7 @@ import 'firebase/auth'
 
                 <Button
                 title='Sign Up'
-                onPress = {this.handleSignUp(this.state)}
+                onPress = { () => this.handleSignUp()}
                 />
             </View>
         ) 

@@ -1,9 +1,8 @@
-import * as firebase from 'firebase';
+import * as firebase from 'firebase/app';
 import 'firebase/firestore';
+import 'firebase/auth'
 
-class Backend {
 
-    constructor(){
         var config ={
         apiKey: "AIzaSyDMapI9uRib5kI4cDd26bZ33tjotjUnbQs",
         authDomain: "travelchat-53a2e.firebaseapp.com",
@@ -14,10 +13,4 @@ class Backend {
       };
       firebase.initializeApp(config);
 
-      //for firebase auth and firestore references
-      const auth = firebase.auth();
-      const db = firebase.firestore();
-    }
-}
-
-export default new Backend();
+      export default firebase;

@@ -15,7 +15,6 @@ import 'firebase/auth'
         aboutMe: ''
     }
 
-    
     handleSignUp = (newUser) => {
         
         firebase.auth().createUserWithEmailAndPassword(
@@ -28,7 +27,6 @@ import 'firebase/auth'
         })
         console.log(newUser)
 }
-    
 
     render(){
         return (

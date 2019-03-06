@@ -1,14 +1,25 @@
 import React from "react";
 import { StyleSheet, Text, View, TextInput,  Button, TouchableOpacity } from "react-native";
 import LinearGradient from 'react-native-linear-gradient';
-import Backend from '../../firebase.js'
+import firebase from '../../firebase'
+import { firestore } from 'firebase';
+import 'firebase/auth'
 
 
 export default class SignIn extends React.Component {
     
     state = {
-      userName: '',
+      email: '',
       password: ''
+    }
+
+    handleSignIn = (user) => {
+      
+      firebase.auth().signInWithEmailAndPassword(
+        this.state.email, 
+        this.state.password
+      )
+      console.log('LOGGED IN')
     }
 
     render() {
@@ -22,14 +33,24 @@ export default class SignIn extends React.Component {
             
             <TextInput 
               style={styles.signInFields} 
-              placeholder="Username"
-              onChangeText={(text) => {
+              placeholder="Email"
+              onChangeText={(value) => {
                 this.setState({
-                  name: text
+                  email: value
                 })
-                console.log(text)
               }}
              />
+
+
+            <TextInput 
+              style={styles.signInFields} 
+              placeholder="Password"
+              onChangeText={(value) => {
+                this.setState({
+                  password: value
+                })
+              }}
+            />
 
              <Button title="Navigate to Chat"
             onPress = {()=>this.props.navigation.navigate('Chat')}
@@ -38,12 +59,12 @@ export default class SignIn extends React.Component {
              <TouchableOpacity
              style={styles.buttons}
               onPress={() => {
-                console.log(this.state.name)
+                this.handleSignIn()
               }}
             >
-              </TouchableOpacity>
+            <Text>LOGIN</Text>
+            </TouchableOpacity>
 
-            <TextInput style={styles.signInFields} placeholder="Password" />
             <Text> Next </Text> 
 
         </View>    

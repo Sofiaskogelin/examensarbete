@@ -32,7 +32,7 @@ export default class ChatRoom extends React.Component {
  
   render() {
     return (
-      <GiftedChat
+      <GiftedChat style={styles.container}
         messages={this.state.messages}
         onSend={messages => this.onSend(messages)}
         user={{
@@ -43,3 +43,9 @@ export default class ChatRoom extends React.Component {
   }
 }
 
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+
+  }
+});

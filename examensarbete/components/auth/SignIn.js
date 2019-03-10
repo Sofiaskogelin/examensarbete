@@ -1,10 +1,8 @@
 import React from "react";
 import { StyleSheet, Text, View, TextInput,  Button, TouchableOpacity } from "react-native";
-import LinearGradient from 'react-native-linear-gradient';
 import firebase from '../../firebase'
 import { firestore } from 'firebase';
 import 'firebase/auth'
-
 
 export default class SignIn extends React.Component {
     
@@ -13,16 +11,16 @@ export default class SignIn extends React.Component {
       password: ''
     }
 
-    handleSignIn = (user) => {
-      
+    handleSignIn = () => {
+     
       firebase.auth().signInWithEmailAndPassword(
         this.state.email, 
         this.state.password
-      )
+      ).then(this.props.navigation.navigate('Dashboard'))
       console.log('LOGGED IN')
     }
 
-    render() {
+    render() {     
       return (
 
         <View style={styles.container}>
@@ -41,7 +39,6 @@ export default class SignIn extends React.Component {
               }}
              />
 
-
             <TextInput 
               style={styles.signInFields} 
               placeholder="Password"
@@ -52,10 +49,6 @@ export default class SignIn extends React.Component {
               }}
             />
 
-             <Button title="Navigate to Chat"
-            onPress = {()=>this.props.navigation.navigate('Chat')}
-            />
-
              <TouchableOpacity
              style={styles.buttons}
               onPress={() => {
@@ -64,8 +57,6 @@ export default class SignIn extends React.Component {
             >
             <Text>LOGIN</Text>
             </TouchableOpacity>
-
-            <Text> Next </Text> 
 
         </View>    
       );

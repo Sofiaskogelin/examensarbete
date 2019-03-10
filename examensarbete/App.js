@@ -5,20 +5,47 @@ import ChatRoom from "../examensarbete/components/chat/ChatRoom";
 import Navbar from "../examensarbete/components/layout/Navbar";
 import SignIn from "../examensarbete/components/auth/SignIn";
 import SignUp from "../examensarbete/components/auth/SignUp";
+import ChatList from "../examensarbete/components/chat/ChatList";
+import Dashboard from "../examensarbete/components/layout/Dashboard";
+import UserList from "../examensarbete/components/layout/UserList";
+import Places from "../examensarbete/components/layout/Places";
+import { createStackNavigator, createAppContainer } from "react-navigation";
+import 'firebase/auth'
 
-import { createStackNavigator } from "react-navigation";
-
-export default class App extends React.Component {
+class App extends React.Component {
   render() {
+
     return (
-      <View style={styles.container}>
-        <Navbar />
-        <SignUp />
-        <SignIn />
-      </View>
+      <AppNavigator /> 
     );
   }
 }
+
+const AppNavigator = createStackNavigator({
+
+  SignIn: {
+    screen: SignIn,
+  },
+  Dashboard: {
+    screen: Dashboard
+  },
+  ChatList: {
+    screen: ChatList
+  },
+  ChatRoom: {
+    screen: ChatRoom
+  },
+  UserList: {
+    screen: UserList
+  },
+  Places: {
+    screen: Places
+  }
+});
+
+export default createAppContainer(AppNavigator)
+
+
 
 const styles = StyleSheet.create({
   container: {

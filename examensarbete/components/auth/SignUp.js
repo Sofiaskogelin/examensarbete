@@ -25,7 +25,6 @@ import 'firebase/auth'
                 userName: newUser.userName
             });
         })
-        console.log(newUser)
 }
 
     render(){

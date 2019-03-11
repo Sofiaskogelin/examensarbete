@@ -1,75 +1,81 @@
 import React from "react";
 import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
-import 'firebase/auth'
+import firebase from "../../firebase";
+import "firebase/auth";
 
-import SignIn from '../../components/auth/SignIn'
-import ChatList from '../../components/chat/ChatList'
-import UserList from '../../components/layout/UserList'
-import Places from '../../components/layout/Places'
+import SignIn from "../../components/auth/SignIn";
+import ChatList from "../../components/chat/ChatList";
+import UserList from "../../components/layout/UserList";
+import Places from "../../components/layout/Places";
+import Navbar from "../layout/Navbar";
+import { yellow } from "ansi-colors";
 
 export default class Dashboard extends React.Component {
+  handleNavigation = value => {
+    console.log(`${value}`);
+    this.props.navigation.navigate(`${value}`);
+  };
 
-  handleNavigation = (value) => {
-    console.log(`${value}`)
-    this.props.navigation.navigate(`${value}`)
-  }
-    
+  onPressButton = e => {
+    firebase
+      .firestore()
+      .collection("users")
+      .get()
+      .then(res => res.forEach(user => console.log(user.data())))
+      .catch(err => console.error(err));
+  };
+
   render() {
     return (
-
       <View style={styles.container}>
-        
-        <Text> Welcome, </Text>
-
+        <View>
+          <Text style={styles.text}> Welcome user </Text>
+        </View>
         <View style={styles.dashboardContainer}>
-
-          <TouchableOpacity 
-          style={styles.dashboardNav}
-          value={SignIn}
-          onPress={() => {
-            this.handleNavigation('SignIn')
-          }}
+          <TouchableOpacity
+            style={styles.dashboardNav}
+            value={SignIn}
+            onPress={() => {
+              this.handleNavigation(() => {});
+            }}
           >
             <Text> MY PROFILE </Text>
           </TouchableOpacity>
 
-          <TouchableOpacity 
-          style={styles.dashboardNav}
-          value={ChatList}
-          onPress={() => {
-            this.handleNavigation('ChatList')
-          }}
+          <TouchableOpacity
+            style={styles.dashboardNav}
+            value={ChatList}
+            onPress={() => {
+              this.handleNavigation("ChatList");
+            }}
           >
             <Text> MESSAGES </Text>
           </TouchableOpacity>
-
         </View>
 
         <View style={styles.dashboardContainer}>
-
-          <TouchableOpacity 
-          style={styles.dashboardNav}
-          value={UserList}
-          onPress={() => {
-            this.handleNavigation('UserList')
-          }}
+          <TouchableOpacity
+            style={styles.dashboardNav}
+            value={UserList}
+            onPress={() => {
+              this.handleNavigation("UserList");
+              this.onPressButton();
+            }}
           >
             <Text> USERS </Text>
           </TouchableOpacity>
 
-          <TouchableOpacity 
-          style={styles.dashboardNav}
-          value={Places}
-          onPress={() => {
-            this.handleNavigation('Places')
-          }}
+          <TouchableOpacity
+            style={styles.dashboardNav}
+            value={Places}
+            onPress={() => {
+              this.handleNavigation("Places");
+            }}
           >
             <Text> PLACES </Text>
           </TouchableOpacity>
-
         </View>
-        
-
+        <Navbar />
       </View>
     );
   }
@@ -77,18 +83,23 @@ export default class Dashboard extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
+    backgroundColor: "yellow",
     flex: 1,
     alignItems: "center",
     justifyContent: "center"
-  },  dashboardContainer: {
+  },
+  dashboardContainer: {
     flex: 1,
     flexDirection: "row",
     alignItems: "center"
   },
- 
   dashboardNav: {
-    backgroundColor: "pink",
+    borderColor: "black",
+    borderWidth: 1,
     width: 100,
-    height: 100
+    height: 50
+  },
+  text: {
+    fontSize: 32
   }
 });

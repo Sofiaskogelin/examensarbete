@@ -10,19 +10,18 @@ import Dashboard from "../examensarbete/components/layout/Dashboard";
 import UserList from "../examensarbete/components/layout/UserList";
 import Places from "../examensarbete/components/layout/Places";
 import { createStackNavigator, createAppContainer } from "react-navigation";
-import 'firebase/auth'
+import "firebase/auth";
 
 class App extends React.Component {
   render() {
-
-    return (
-      <AppNavigator /> 
-    );
+    return <AppNavigator />;
   }
 }
 
 const AppNavigator = createStackNavigator({
-
+  SignIn: {
+    screen: SignIn
+  },
   Dashboard: {
     screen: Dashboard
   },
@@ -40,9 +39,7 @@ const AppNavigator = createStackNavigator({
   }
 });
 
-export default createAppContainer(AppNavigator)
-
-
+export default createAppContainer(AppNavigator);
 
 const styles = StyleSheet.create({
   container: {

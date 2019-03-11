@@ -12,17 +12,7 @@ import { yellow } from "ansi-colors";
 
 export default class Dashboard extends React.Component {
   handleNavigation = value => {
-    console.log(`${value}`);
     this.props.navigation.navigate(`${value}`);
-  };
-
-  onPressButton = e => {
-    firebase
-      .firestore()
-      .collection("users")
-      .get()
-      .then(res => res.forEach(user => console.log(user.data())))
-      .catch(err => console.error(err));
   };
 
   render() {
@@ -59,7 +49,6 @@ export default class Dashboard extends React.Component {
             value={UserList}
             onPress={() => {
               this.handleNavigation("UserList");
-              this.onPressButton();
             }}
           >
             <Text> USERS </Text>

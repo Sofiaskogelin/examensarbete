@@ -6,24 +6,47 @@ import firebase from "firebase";
 export default class UserList extends React.Component {
   constructor(props) {
     super(props);
-    // this.onPressButton = this.onPressButton.bind(this);
+
+    state = {
+      users: []
+    };
+  }
+
+  componentWillMount() {
     firebase
       .firestore()
       .collection("users")
       .get()
-      .then(res =>
-        res.forEach(user => {
-          console.log(user.data());
-        })
-      )
+      .then(res => {
+        console.log(res.data());
+        const users = [];
+        res.forEach(user => users.push(user.data()));
+        this.setState({ ...this.state, users });
+        console.log(this.state);
+      })
       .catch(err => console.error(err));
   }
 
   render() {
+    const { users } = this.state;
+
     return (
-      <View style={styles.container}>
-        <Text> {} </Text>
-      </View>
+      <React.Fragment>
+        {users.length > 0 ? (
+          <View style={styles.container}>
+            <Text>
+              {" "}
+              {
+                (users.map = user => {
+                  user.userName;
+                })
+              }{" "}
+            </Text>
+          </View>
+        ) : (
+          <View>Loading...</View>
+        )}
+      </React.Fragment>
     );
   }
 }

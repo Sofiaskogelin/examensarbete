@@ -37,6 +37,9 @@ const AppNavigator = createStackNavigator({
   },
   Places: {
     screen: Places
+  },
+  SignUp: {
+    screen: SignUp
   }
 });
 

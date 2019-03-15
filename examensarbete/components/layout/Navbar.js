@@ -7,10 +7,6 @@ class Navbar extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Image
-          style={{ width: 200, height: 200 }}
-          source={require("../auth/earth.png")}
-        />
         {/*<TouchableOpacity onPress={this.onPressButton} style={styles.button}>
            <Image style={styles.button} source={require()} /> 
     </TouchableOpacity>*/}

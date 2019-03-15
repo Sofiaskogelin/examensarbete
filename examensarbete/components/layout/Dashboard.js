@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
+import { StyleSheet, Text, View, TouchableOpacity, Image } from "react-native";
 import { LinearGradient } from 'expo'
 import firebase from "../../firebase";
 import "firebase/auth";
@@ -33,7 +33,10 @@ export default class Dashboard extends React.Component {
               this.handleNavigation(() => {});
             }}
           >
-            <Text> MY PROFILE </Text>
+            <Image
+              style={styles.icon}
+              source={require("../layout/avatar.png")}
+            />
           </TouchableOpacity>
 
           <TouchableOpacity
@@ -42,8 +45,9 @@ export default class Dashboard extends React.Component {
             onPress={() => {
               this.handleNavigation("ChatList");
             }}
-          > 
-            <Text> MESSAGES </Text>
+          >
+            <Image style={styles.icon} source={require("../layout/chat.png")} />
+
           </TouchableOpacity>
         </View>
 
@@ -55,7 +59,10 @@ export default class Dashboard extends React.Component {
               this.handleNavigation("UserList");
             }}
           >
-            <Text> USERS </Text>
+            <Image
+              style={styles.icon}
+              source={require("../layout/friendship.png")}
+            />
           </TouchableOpacity>
 
           <TouchableOpacity
@@ -65,7 +72,10 @@ export default class Dashboard extends React.Component {
               this.handleNavigation("Places");
             }}
           >
-            <Text> PLACES </Text>
+            <Image
+              style={styles.icon}
+              source={require("../layout/paper-plane.png")}
+            />
           </TouchableOpacity>
         </View>
         <Navbar />
@@ -87,12 +97,19 @@ const styles = StyleSheet.create({
     alignItems: "center"
   },
   dashboardNav: {
-    borderColor: "black",
+    // flex: 0,
+    borderColor: "orange",
     borderWidth: 1,
     width: 100,
-    height: 50
+    height: 100
   },
   text: {
     fontSize: 32
+  },
+  icon: {
+    width: 60,
+    height: 60,
+    alignItems: "center",
+    justifyContent: "center"
   }
 });

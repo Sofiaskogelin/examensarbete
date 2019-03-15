@@ -19,7 +19,8 @@ class App extends React.Component {
 }
 
 const AppNavigator = createStackNavigator({
-  SignIn: {
+
+  SignIn: {
     screen: SignIn
   },
   Dashboard: {

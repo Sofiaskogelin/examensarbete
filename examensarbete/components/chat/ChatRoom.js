@@ -1,40 +1,54 @@
 import React from 'react';
 import { StyleSheet, Text, View } from "react-native";
-import { GiftedChat } from 'react-native-gifted-chat'
+import { GiftedChat } from 'react-native-gifted-chat';
+import firebase from "firebase";
+
  
 export default class ChatRoom extends React.Component {
+  constructor(props) {
+    super(props);
+    // this.onPressButton = this.onPressButton.bind(this);
+    firebase
+      .firestore()
+      .collection("messages")
+      .get()
+      .then(res =>
+        res.forEach(message => {
+        })
+      )
+      .catch(err => console.error(err));
+  }
+
   state = {
     messages: [],
   }
- 
-  componentWillMount() {
-    this.setState({
-      messages: [
-        {
-          _id: 1,
-          text: 'Hello developer',
-          createdAt: new Date(),
-          user: {
-            _id: 2,
-            name: 'React Native',
-            avatar: 'https://placeimg.com/140/140/any',
-          },
-        },
-      ],
+
+  componentDidMount() {
+    firebase.firestore().collection('messages')
+    .onSnapshot(snapshot => {
+      const messages = []
+      snapshot.forEach(doc => {
+        messages.push(doc.data())
+      })
+      this.setState({
+        ...this.state, messages
+      })
     })
   }
- 
-  onSend(messages = []) {
-    this.setState(previousState => ({
-      messages: GiftedChat.append(previousState.messages, messages),
-    }))
-  }
+
+  sendMessage(message) {
+    console.log(message)
+    firebase.firestore().collection('messages').doc(message[0]._id).set({
+       ...message[0] 
+    })
+    }
+  
  
   render() {
     return (
       <GiftedChat style={styles.container}
         messages={this.state.messages}
-        onSend={messages => this.onSend(messages)}
+        onSend={(message) => this.sendMessage(message)}
         user={{
           _id: 1,
         }}

@@ -1,5 +1,6 @@
 import React from "react";
 import { StyleSheet, Text, View, TextInput,  Button, TouchableOpacity } from "react-native";
+import { LinearGradient } from 'expo'
 import firebase from '../../firebase'
 import { firestore } from 'firebase';
 import 'firebase/auth'
@@ -22,6 +23,11 @@ export default class SignIn extends React.Component {
 
     render() {     
       return (
+
+        <LinearGradient
+        colors={['#ffdf47', '#f37335']}
+        style={{flex: 1}}
+      >
 
         <View style={styles.container}>
 
@@ -59,6 +65,7 @@ export default class SignIn extends React.Component {
             </TouchableOpacity>
 
         </View>    
+        </LinearGradient> 
       );
     }
   }
@@ -70,7 +77,6 @@ const styles = StyleSheet.create({
     },
     container: {
       flex: 1,
-      backgroundColor: "yellow",
       alignItems: "center",
       justifyContent: "center"
     },

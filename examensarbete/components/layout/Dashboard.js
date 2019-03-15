@@ -1,5 +1,6 @@
 import React from "react";
 import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
+import { LinearGradient } from 'expo'
 import firebase from "../../firebase";
 import "firebase/auth";
 
@@ -8,7 +9,6 @@ import ChatList from "../../components/chat/ChatList";
 import UserList from "../../components/layout/UserList";
 import Places from "../../components/layout/Places";
 import Navbar from "../layout/Navbar";
-import { yellow } from "ansi-colors";
 
 export default class Dashboard extends React.Component {
   handleNavigation = value => {
@@ -17,6 +17,10 @@ export default class Dashboard extends React.Component {
 
   render() {
     return (
+      <LinearGradient
+      colors={['#ffdf47', '#f37335']}
+      style={{flex: 1}}
+    >
       <View style={styles.container}>
         <View>
           <Text style={styles.text}> Welcome user </Text>
@@ -38,7 +42,7 @@ export default class Dashboard extends React.Component {
             onPress={() => {
               this.handleNavigation("ChatList");
             }}
-          >
+          > 
             <Text> MESSAGES </Text>
           </TouchableOpacity>
         </View>
@@ -66,13 +70,13 @@ export default class Dashboard extends React.Component {
         </View>
         <Navbar />
       </View>
+      </LinearGradient>
     );
   }
 }
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "yellow",
     flex: 1,
     alignItems: "center",
     justifyContent: "center"

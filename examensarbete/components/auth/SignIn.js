@@ -1,15 +1,9 @@
 import React from "react";
-import {
-  StyleSheet,
-  Text,
-  View,
-  TextInput,
-  Button,
-  TouchableOpacity
-} from "react-native";
-import firebase from "../../firebase";
-import { firestore } from "firebase";
-import "firebase/auth";
+import { StyleSheet, Text, View, TextInput,  Button, TouchableOpacity } from "react-native";
+import { LinearGradient } from 'expo'
+import firebase from '../../firebase'
+import { firestore } from 'firebase';
+import 'firebase/auth'
 import SignUp from "../auth/SignUp";
 
 export default class SignIn extends React.Component {
@@ -30,13 +24,21 @@ export default class SignIn extends React.Component {
     this.props.navigation.navigate(`${value}`);
   };
 
+
   render() {
     return (
-      <View style={styles.container}>
+      <LinearGradient
+        colors={['#ffdf47', '#f37335']}
+        style={{flex: 1}}
+      >
         <Image
           style={{ width: 200, height: 200 }}
           source={require("../auth/earth.png")}
         />
+
+
+        <View style={styles.container}>
+
 
         <TextInput
           style={styles.signInFields}
@@ -58,14 +60,15 @@ export default class SignIn extends React.Component {
           }}
         />
 
-        <TouchableOpacity
-          style={styles.buttons}
-          onPress={() => {
-            this.handleSignIn();
-          }}
-        >
-          <Text>LOGIN</Text>
-        </TouchableOpacity>
+
+             <TouchableOpacity
+             style={styles.buttons}
+              onPress={() => {
+                this.handleSignIn()
+              }}
+            >
+            <Text>LOGIN</Text>
+            </TouchableOpacity>
         <TouchableOpacity
           styles={styles.buttons}
           onPress={() => {
@@ -74,8 +77,11 @@ export default class SignIn extends React.Component {
         >
           <Text>No account? Sign up here</Text>
         </TouchableOpacity>
-      </View>
-    );
+
+        </View>    
+        </LinearGradient> 
+      );
+    }
   }
 }
 
@@ -89,9 +95,18 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center"
   },
+    text: {
+      fontSize: 40,
+    },
+    container: {
+      flex: 1,
+      alignItems: "center",
+      justifyContent: "center"
+    },
 
-  signInFields: {
-    height: 80,
-    fontSize: 20
-  }
-});
+    signInFields: {
+      height: 80,
+      fontSize: 20,
+    }
+  });
+  

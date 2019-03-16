@@ -8,7 +8,7 @@ class Navbar extends Component {
     return (
       <View style={styles.container}>
         <Image
-          style={{ width: 200, height: 200 }}
+          style={{ width: 180, height: 180, tintColor: "white", borderWidth: 0, marginTop: 150}}
           source={require("../auth/earth.png")}
         />
         {/*<TouchableOpacity onPress={this.onPressButton} style={styles.button}>
@@ -21,8 +21,7 @@ class Navbar extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    borderColor: "black",
-    borderWidth: 1
+    flex: 1,
   },
   button: {
     backgroundColor: "red",

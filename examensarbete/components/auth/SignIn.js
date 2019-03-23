@@ -15,17 +15,23 @@ export default class SignIn extends React.Component {
   };
 
   handleSignIn = () => {
-    firebase
+    console.log(this.state)
+    firebase.auth().signOut().then(() => {
+      firebase
       .auth()
-      .signInWithEmailAndPassword(this.state.email, this.state.password)
-      .then(this.props.navigation.navigate("Dashboard"));
+      .signInWithEmailAndPassword(this.state.email.toLowerCase(), this.state.password)
+      .then(() => this.props.navigation.navigate("Dashboard"))
     console.log("LOGGED IN");
+     
+    }).catch(function(error) {
+      throw error
+    });
+    
   };
 
-  handleNavigation = value => {
-    this.props.navigation.navigate(`${value}`);
+  handleNavigation = () => {
+    this.props.navigation.navigate('SignUp');
   };
-
 
   render() {
     return (
@@ -86,7 +92,7 @@ export default class SignIn extends React.Component {
             <TouchableOpacity 
             style= {styles.signUp}
             onPress={() => {
-              this.handleSignUp
+              this.handleNavigation()
             }}
             >
               <Text style={styles.signUpText}> No account? Sign up here </Text>

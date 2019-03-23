@@ -23,8 +23,20 @@ class App extends React.Component {
 
 const AppNavigator = createStackNavigator({
 
+  SignIn: {
+    screen: SignIn,
+    navigationOptions: {
+      header: null
+    }
+  },
+  SignUp: {
+    screen: SignUp,
+  },
   Dashboard: {
-    screen: Dashboard
+    screen: Dashboard,
+    navigationOptions: {
+      header: null
+    }
   },
   ChatList: {
     screen: ChatList
@@ -38,7 +50,7 @@ const AppNavigator = createStackNavigator({
   Places: {
     screen: Places
   },
-}, { headerMode: 'none' });
+});
 
 export default createAppContainer(AppNavigator);
 

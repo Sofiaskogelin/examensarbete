@@ -10,11 +10,22 @@ import UserList from "../../components/layout/UserList";
 import Places from "../../components/layout/Places";
 
 export default class Dashboard extends React.Component {
+  
   handleNavigation = value => {
     this.props.navigation.navigate(`${value}`);
   };
 
   render() {
+
+    var user = firebase.auth().currentUser;
+    console.log(user)
+
+    if(!user){
+      this.props.navigation.navigate('SignIn');
+    } else {
+      this.props.navigation.navigate('Dashboard')
+    }
+
     return (
       <LinearGradient
       colors={['#ffdf47', '#f37335']}

@@ -1,9 +1,11 @@
 import React from "react";
-import { StyleSheet, Text, View, TextInput,  Button, TouchableOpacity } from "react-native";
+import { StyleSheet, Image, Text, View, TextInput,  Button, TouchableOpacity } from "react-native";
 import { LinearGradient } from 'expo'
 import firebase from '../../firebase'
 import { firestore } from 'firebase';
 import 'firebase/auth'
+import Navbar from "../layout/Navbar";
+
 import SignUp from "../auth/SignUp";
 
 export default class SignIn extends React.Component {
@@ -31,82 +33,119 @@ export default class SignIn extends React.Component {
         colors={['#ffdf47', '#f37335']}
         style={{flex: 1}}
       >
-        <Image
-          style={{ width: 200, height: 200 }}
-          source={require("../auth/earth.png")}
-        />
-
 
         <View style={styles.container}>
+          
+          <Navbar />
 
+            <View style={styles.signInFields}>
 
-        <TextInput
-          style={styles.signInFields}
-          placeholder="Email"
-          onChangeText={value => {
-            this.setState({
-              email: value
-            });
-          }}
-        />
+            <Image
+            style={styles.icons}
+            source={require("./profile.png")}
+          />
 
-        <TextInput
-          style={styles.signInFields}
-          placeholder="Password"
-          onChangeText={value => {
-            this.setState({
-              password: value
-            });
-          }}
-        />
+            <TextInput 
+              style={styles.signInInput}
+              placeholderTextColor="white"    
+              placeholder="Email"
+              onChangeText={(value) => {
+                this.setState({
+                  email: value
+                })
+              }}
+             />
 
+             </View>
+            
+             <View style={styles.signInFields}>
 
+            <TextInput 
+              style={styles.signInInput} 
+              placeholderTextColor="white"  
+              secureTextEntry="true"  
+              placeholder="Password"
+              onChangeText={(value) => {
+                this.setState({
+                  password: value
+                })
+              }}
+            />
+
+            </View> 
+            
              <TouchableOpacity
              style={styles.buttons}
               onPress={() => {
                 this.handleSignIn()
               }}
             >
-            <Text>LOGIN</Text>
+              <Text style={styles.buttonText}>Sign in</Text>
             </TouchableOpacity>
-        <TouchableOpacity
-          styles={styles.buttons}
-          onPress={() => {
-            this.handleNavigation("SignUp");
-          }}
-        >
-          <Text>No account? Sign up here</Text>
-        </TouchableOpacity>
+
+            <TouchableOpacity 
+            style= {styles.signUp}
+            onPress={() => {
+              this.handleSignUp
+            }}
+            >
+              <Text style={styles.signUpText}> No account? Sign up here </Text>
+            </TouchableOpacity>
 
         </View>    
         </LinearGradient> 
       );
     }
   }
-}
 
 const styles = StyleSheet.create({
-  text: {
-    fontSize: 40
-  },
-  container: {
-    flex: 1,
-    backgroundColor: "yellow",
-    alignItems: "center",
-    justifyContent: "center"
-  },
-    text: {
-      fontSize: 40,
-    },
+
+
     container: {
       flex: 1,
       alignItems: "center",
-      justifyContent: "center"
+      marginBottom: 100
     },
-
+    buttons: {
+      borderWidth: 1, 
+      padding: 20,
+      width: 280,
+      marginTop: 30,
+      borderColor: "white"
+    },
     signInFields: {
+      flexDirection: 'row',
+      justifyContent: "center",
+      alignItems: 'center',
+    },
+    icons: {
+      left: 30,
+      width: 20,
+      height: 20, 
+      tintColor: "white",
+    },
+    buttonText: {
+      color: "white",
+      fontSize: 15,
+      alignSelf: "center"
+    },
+    signInFields: {
+      paddingTop: 10,
+      paddingLeft: 40,
+      margin: 10,
       height: 80,
-      fontSize: 20,
+      width: 280,
+      fontSize: 17,
+      color: "white",
+      borderColor: "white",
+      borderBottomWidth: 1,
+      marginBottom: 20
+    },
+    signUp : {
+      marginTop: 30
+    },
+    signUpText : {
+      color: "white"      
     }
   });
   

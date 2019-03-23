@@ -13,7 +13,10 @@ import { createStackNavigator, createAppContainer } from "react-navigation";
 import "firebase/auth";
 
 class App extends React.Component {
+
+  
   render() {
+    
     return <AppNavigator />;
   }
 }
@@ -22,6 +25,9 @@ const AppNavigator = createStackNavigator({
 
   SignIn: {
     screen: SignIn
+  },
+  SignUp: {
+    screen: SignUp
   },
   Dashboard: {
     screen: Dashboard
@@ -38,10 +44,7 @@ const AppNavigator = createStackNavigator({
   Places: {
     screen: Places
   },
-  SignUp: {
-    screen: SignUp
-  }
-});
+}, { headerMode: 'none' });
 
 export default createAppContainer(AppNavigator);
 

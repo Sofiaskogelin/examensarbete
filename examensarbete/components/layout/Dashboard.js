@@ -21,10 +21,11 @@ export default class Dashboard extends React.Component {
       style={{flex: 1}}
     >
       <View style={styles.container}>
-        <View>
+        <View style={styles.upperDashboardContainer}>
           <Text style={styles.text}> Welcome user </Text>
         </View>
-        <View style={styles.dashboardContainer}>
+
+        <View style={styles.lowerDashboardContainer}>
           <TouchableOpacity
             style={styles.dashboardNav}
             value={SignIn}
@@ -48,9 +49,7 @@ export default class Dashboard extends React.Component {
             <Image style={styles.icon} source={require("../layout/chat.png")} />
 
           </TouchableOpacity>
-        </View>
 
-        <View style={styles.dashboardContainer}>
           <TouchableOpacity
             style={styles.dashboardNav}
             value={UserList}
@@ -86,28 +85,42 @@ export default class Dashboard extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: "center",
-    justifyContent: "center"
   },
-  dashboardContainer: {
-    flex: 1,
+
+  upperDashboardContainer: {
+    height: "50%"
+  },
+
+  lowerDashboardContainer: {
+    height: "50%",
     flexDirection: "row",
-    alignItems: "center"
+    flexWrap: "wrap",
+    padding: 5
   },
+
+
+  // dashboardContainer: {
+  //   flex: 1,
+  //   flexDirection: "row",
+  //   alignItems: "center"
+  // },
   dashboardNav: {
     // flex: 0,
     borderColor: "orange",
+    backgroundColor: "white",
     borderWidth: 1,
-    width: 100,
-    height: 100
+    width: "50%", 
+    height: "50%",
+    padding: 5,
+    justifyContent: "center",
   },
   text: {
     fontSize: 32
   },
   icon: {
+    tintColor: "#ffdf47",
     width: 60,
     height: 60,
-    alignItems: "center",
-    justifyContent: "center"
+    alignSelf: "center"
   }
 });

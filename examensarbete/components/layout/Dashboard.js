@@ -8,7 +8,6 @@ import SignIn from "../../components/auth/SignIn";
 import ChatList from "../../components/chat/ChatList";
 import UserList from "../../components/layout/UserList";
 import Places from "../../components/layout/Places";
-import Navbar from "../layout/Navbar";
 
 export default class Dashboard extends React.Component {
   handleNavigation = value => {
@@ -78,7 +77,6 @@ export default class Dashboard extends React.Component {
             />
           </TouchableOpacity>
         </View>
-        <Navbar />
       </View>
       </LinearGradient>
     );

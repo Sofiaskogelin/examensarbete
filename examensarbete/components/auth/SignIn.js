@@ -33,11 +33,6 @@ export default class SignIn extends React.Component {
         colors={['#ffdf47', '#f37335']}
         style={{flex: 1}}
       >
-        <Image
-          style={{ width: 200, height: 200 }}
-          source={require("../auth/earth.png")}
-        />
-
 
         <View style={styles.container}>
           
@@ -96,14 +91,6 @@ export default class SignIn extends React.Component {
             >
               <Text style={styles.signUpText}> No account? Sign up here </Text>
             </TouchableOpacity>
-        <TouchableOpacity
-          styles={styles.buttons}
-          onPress={() => {
-            this.handleNavigation("SignUp");
-          }}
-        >
-          <Text>No account? Sign up here</Text>
-        </TouchableOpacity>
 
         </View>    
         </LinearGradient> 

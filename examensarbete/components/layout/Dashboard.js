@@ -1,6 +1,6 @@
 import React from "react";
 import { StyleSheet, Text, View, TouchableOpacity, Image } from "react-native";
-import { LinearGradient } from 'expo'
+import { LinearGradient } from "expo";
 import firebase from "../../firebase";
 import "firebase/auth";
 
@@ -16,68 +16,67 @@ export default class Dashboard extends React.Component {
 
   render() {
     return (
-      <LinearGradient
-      colors={['#ffdf47', '#f37335']}
-      style={{flex: 1}}
-    >
-      <View style={styles.container}>
-        <View>
-          <Text style={styles.text}> Welcome user </Text>
+      <LinearGradient colors={["#ffdf47", "#f37335"]} style={{ flex: 1 }}>
+        <View style={styles.container}>
+          <View>
+            <Text style={styles.text}> Welcome user </Text>
+          </View>
+          <View style={styles.dashboardContainer}>
+            <TouchableOpacity
+              style={styles.dashboardNav}
+              value={SignIn}
+              onPress={() => {
+                this.handleNavigation(() => {});
+              }}
+            >
+              <Image
+                style={styles.icon}
+                source={require("../layout/img/avatar.png")}
+              />
+            </TouchableOpacity>
+
+            <TouchableOpacity
+              style={styles.dashboardNav}
+              value={ChatList}
+              onPress={() => {
+                this.handleNavigation("ChatList");
+              }}
+            >
+              <Image
+                style={styles.icon}
+                source={require("../layout/img/chat.png")}
+              />
+            </TouchableOpacity>
+          </View>
+
+          <View style={styles.dashboardContainer}>
+            <TouchableOpacity
+              style={styles.dashboardNav}
+              value={UserList}
+              onPress={() => {
+                this.handleNavigation("UserList");
+              }}
+            >
+              <Image
+                style={styles.icon}
+                source={require("../layout/img/friendship.png")}
+              />
+            </TouchableOpacity>
+
+            <TouchableOpacity
+              style={styles.dashboardNav}
+              value={Places}
+              onPress={() => {
+                this.handleNavigation("Places");
+              }}
+            >
+              <Image
+                style={styles.icon}
+                source={require("../layout/img/paper-plane.png")}
+              />
+            </TouchableOpacity>
+          </View>
         </View>
-        <View style={styles.dashboardContainer}>
-          <TouchableOpacity
-            style={styles.dashboardNav}
-            value={SignIn}
-            onPress={() => {
-              this.handleNavigation(() => {});
-            }}
-          >
-            <Image
-              style={styles.icon}
-              source={require("../layout/avatar.png")}
-            />
-          </TouchableOpacity>
-
-          <TouchableOpacity
-            style={styles.dashboardNav}
-            value={ChatList}
-            onPress={() => {
-              this.handleNavigation("ChatList");
-            }}
-          >
-            <Image style={styles.icon} source={require("../layout/chat.png")} />
-
-          </TouchableOpacity>
-        </View>
-
-        <View style={styles.dashboardContainer}>
-          <TouchableOpacity
-            style={styles.dashboardNav}
-            value={UserList}
-            onPress={() => {
-              this.handleNavigation("UserList");
-            }}
-          >
-            <Image
-              style={styles.icon}
-              source={require("../layout/friendship.png")}
-            />
-          </TouchableOpacity>
-
-          <TouchableOpacity
-            style={styles.dashboardNav}
-            value={Places}
-            onPress={() => {
-              this.handleNavigation("Places");
-            }}
-          >
-            <Image
-              style={styles.icon}
-              source={require("../layout/paper-plane.png")}
-            />
-          </TouchableOpacity>
-        </View>
-      </View>
       </LinearGradient>
     );
   }

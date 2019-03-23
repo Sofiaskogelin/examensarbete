@@ -43,7 +43,7 @@ export default class SignUp extends React.Component {
 
   render() {
     return (
-      <View>
+      <View style={styles.container}>
         <TextInput
           placeholder="email"
           keyboardType="email-address"
@@ -56,6 +56,7 @@ export default class SignUp extends React.Component {
 
         <TextInput
           placeholder="Password"
+          secureTextEntry="true"  
           onChangeText={value => {
             this.setState({
               password: value
@@ -113,8 +114,13 @@ export default class SignUp extends React.Component {
     );
   }
 }
-
+ 
 const styles = StyleSheet.create({
+
+  container: {
+    flex: 1
+  },
+
   buttonContainer: {
     backgroundColor: "#2980b6",
     paddingVertical: 15
